@@ -1,27 +1,124 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import { Message } from 'element-ui'
+import axios from 'axios'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/user'
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    component: () => import('../views/login/Login.vue')
+  },
+  {
+    path: '/register',
+    component: () => import('../views/login/Register.vue')
+  },
+  {
+    path: '/admin',
+    meta: { requiresAdmin: true, requiresAuth: true },
+    component: () => import('../views/admin/index/Index.vue'),
+    children: [
+      {
+        path: '',
+        commonent: () => import('../views/admin/index/Home.vue')
+      },
+      {
+        path: 'OrderIndex',
+        component: () => import('../views/admin/order/OrderIndex.vue')
+      },
+      {
+        path: 'UserIndex',
+        component: () => import('../views/admin/user/UserIndex.vue')
+      },
+      {
+        path: 'GoodsIndex',
+        component: () => import('../views/admin/goods/GoodsIndex.vue')
+      },
+      {
+        path: 'TypeIndex',
+        component: () => import('../views/admin/type/TypeIndex.vue')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: () => import('../views/user/index/Index.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../views/user/index/Home.vue')
+      },
+      {
+        path: 'TypeIndex',
+        component: () => import('../views/user/type/TypeIndex.vue')
+      },
+      {
+        path: 'HotIndex',
+        component: () => import('../views/user/hot/HotIndex.vue')
+      },
+      {
+        path: 'NewIndex',
+        component: () => import('../views/user/new/NewIndex.vue')
+      },
+      {
+        path: 'OrderIndex',
+        component: () => import('../views/user/order/OrderIndex.vue')
+      },
+      {
+        path: 'CartIndex',
+        component: () => import('../views/user/cart/CartIndex.vue')
+      },
+      {
+        path: "UserProfile",
+        component: () => import('../views/user/user/UserProfile.vue')
+      }
+    ]
   }
 ]
 
+// 获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+// 修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
+/* eslint-disable */
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: 'smooth',
+      }
+    }
+    return { x: 0, y: 0 }
+  }
+})
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  const isAdmin = localStorage.getItem('isAdmin') === '1';
+  const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const token = localStorage.getItem('token')
+  if (requiresAuth && !token) {
+    Message.error('请先登录')
+    next('/login')
+  } else if (requiresAdmin && !isAdmin) {
+    Message.error('您不是管理员，无法访问')
+    next('/user')
+  } else {
+    axios.defaults.headers.common['Token'] = token
+    next()
+  }
 })
 
 export default router

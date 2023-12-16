@@ -1,0 +1,33 @@
+{
+    "menuInfo": {
+        "title": "功能管理",
+        "name": "functionManagement",
+        "icon": "el-icon-s-fold",
+        "child": [
+            {
+                "title": "订单管理",
+                "name": "OrderIndex",
+                "icon": "el-icon-mobile",
+                "path": "/admin/OrderIndex"
+            },
+            {
+                "title": "客户管理",
+                "name": "UserIndex",
+                "icon": "el-icon-notebook-1",
+                "path": "/admin/UserIndex"
+            },
+            {
+                "title": "商品管理",
+                "name": "GoodsIndex",
+                "icon": "el-icon-s-custom",
+                "path": "/admin/GoodsIndex"
+            },
+            {
+                "title": "类目管理",
+                "name": "TypeIndex",
+                "icon": "el-icon-menu",
+                "path": "/admin/TypeIndex"
+            }
+        ]
+    }
+}

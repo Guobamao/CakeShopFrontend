@@ -1,0 +1,26 @@
+{
+    "HomePage": {
+        "title": "首页",
+        "name": "HomePage",
+        "icon": "el-icon-s-fold",
+        "path": "/user"
+    },
+    "TypeIndex": {
+        "title": "商品分类",
+        "name": "TypeIndex",
+        "icon": "el-icon-s-grid",
+        "path": "/user/TypeIndex"
+    },
+    "HotIndex": {
+        "title": "热销",
+        "name": "HotIndex",
+        "icon": "el-icon-s-goods",
+        "path": "/user/HotIndex"
+    },
+    "NewIndex": {
+        "title": "新品",
+        "name": "NewIndex",
+        "icon": "el-icon-s-goods",
+        "path": "/user/NewIndex"
+    }
+}

@@ -11,12 +11,6 @@
         "icon": "el-icon-s-grid",
         "path": "/user/TypeIndex"
     },
-    "HotIndex": {
-        "title": "热销",
-        "name": "HotIndex",
-        "icon": "el-icon-s-goods",
-        "path": "/user/HotIndex"
-    },
     "NewIndex": {
         "title": "新品",
         "name": "NewIndex",

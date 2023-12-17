@@ -62,6 +62,12 @@
                         </el-option>
                     </el-select>
                 </el-form-item>
+                <el-form-item label="归类" label-width="20%" required>
+                    <el-select v-model="addForm.type"  placeholder="请选择归类" style="width: 22rem;">
+                        <el-option v-for="item in type2Data" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="封面" label-width="20%" required>
                     <el-upload action="#" :on-preview="handlePreview" :before-remove="beforeRemove"
                         :file-list="addForm.cover" :http-request="handleCoverUpload" :limit="1"
@@ -106,6 +112,12 @@
                         </el-option>
                     </el-select>
                 </el-form-item>
+                <el-form-item label="归类" label-width="20%" required>
+                    <el-select v-model="editForm.type"  placeholder="请选择归类" style="width: 22rem;">
+                        <el-option v-for="item in type2Data" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="封面" label-width="20%" required>
                     <el-upload action="#" :on-preview="handlePreview" :before-remove="beforeRemove"
                         :file-list="editForm.cover" :http-request="handleCoverUpload" :limit="1"
@@ -145,9 +157,11 @@ export default {
             loadingTime: 500,
             searchType: "0",
             tabData: [
-                { label: '全部商品', value: "0" },
-                { label: '轮播图推荐', value: "5" },
-                { label: '新品推荐', value: "1" }
+                { label: '全部商品', value: '' },
+                { label: '蛋糕', value: "1" },
+                { label: '面包', value: "2" },
+                { label: '下午茶', value: "3"},
+                { label: '冰淇淋', value: "4"}
             ],
             addFormVisible: false,
             addForm: {
@@ -157,11 +171,18 @@ export default {
                 description: '',
                 cover: [],
                 images: [],
-                typeId: ''
+                typeId: '',
+                type: ''
             },
             previewVisible: false,
             previewImage: '',
             typeData: [],
+            type2Data: [
+                { label: '无', value: 0},
+                { label: '生日', value: 1},
+                { label: '儿童', value: 2},
+                { label: '聚会', value: 3}
+            ],
             editFormVisible: false,
             editForm: {
                 id: '',
@@ -232,7 +253,7 @@ export default {
                 params: {
                     page: this.currentPage,
                     pageSize: this.pageSize,
-                    topType: item.name
+                    typeId: item.name
                 }
             }).then((res) => {
                 if (res.data.code === 1) {

@@ -11,13 +11,13 @@
                                 <span style="margin-left: 10px">蛋糕店</span>
                             </router-link>
                             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
-                                @select="handleSelect" text-color="#fff" active-text-color="#8470ff"
+                                text-color="#fff" active-text-color="#8470ff"
                                 background-color="#ffc0cb" style="margin-left: 20px;">
                                 <el-menu-item v-for="item in apiData" :key="item.name" :index="item.name"
                                     @click="handleMenuClick(item)">{{ item.title }}</el-menu-item>
                                 <el-menu-item index="Order" v-if="this.username !== null"
                                     @click="gotoPage('order')">我的订单</el-menu-item>
-                                <el-menu-item index="MyProfile" v-if="this.username !== null"
+                                <el-menu-item index="MyProfile" v-if="this.username !== null && this.isAdmin === '0'"
                                     @click="gotoPage('MyProfile')">个人中心</el-menu-item>
                                 <el-menu-item index="Logout" v-if="this.username !== null"
                                     @click="gotoPage('logout')">退出</el-menu-item>
@@ -54,6 +54,7 @@ export default {
     methods: {
         handleMenuClick(item) {
             this.$router.push(item.path);
+            sessionStorage.setItem("activeIndex", item.name);
         },
         gotoPage(page) {
             if (page === 'logout') {
@@ -76,13 +77,22 @@ export default {
             } else if (page === 'MyProfile') {
                 this.$router.push('/user/UserProfile')
             } else if (page === 'search') {
-                this.$router.push('/user/SearchIndex')
+                // 未完成
+                this.$alert('未完成', '提示', {
+                    confirmButtonText: '确定',
+                });
             } else if (page === 'cart') {
-                this.$router.push('/user/CartIndex')
+                // 未完成
+                this.$alert('未完成', '提示', {
+                    confirmButtonText: '确定',
+                });
             } else if (page === 'login') {
                 this.$router.push('/login')
             } else if (page === 'order') {
-                this.$router.push('/user/OrderIndex')
+                // 未完成
+                this.$alert('未完成', '提示', {
+                    confirmButtonText: '确定',
+                });
             }
         }
     },

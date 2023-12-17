@@ -57,10 +57,6 @@ const routes = [
         component: () => import('../views/user/type/TypeIndex.vue')
       },
       {
-        path: 'HotIndex',
-        component: () => import('../views/user/hot/HotIndex.vue')
-      },
-      {
         path: 'NewIndex',
         component: () => import('../views/user/new/NewIndex.vue')
       },
@@ -75,7 +71,7 @@ const routes = [
       {
         path: "UserProfile",
         component: () => import('../views/user/user/UserProfile.vue')
-      }
+      },
     ]
   }
 ]
@@ -91,16 +87,7 @@ VueRouter.prototype.push = function push(location) {
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        selector: to.hash,
-        behavior: 'smooth',
-      }
-    }
-    return { x: 0, y: 0 }
-  }
+  routes
 })
 
 // 路由守卫

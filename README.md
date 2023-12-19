@@ -1,0 +1,2 @@
+# CakeShopFrontend
+一个基于Vue2实现的网上蛋糕商店前端项目

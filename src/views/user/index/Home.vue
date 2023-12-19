@@ -3,7 +3,7 @@
         <el-carousel height="483px">
             <el-carousel-item v-for="item in carouselData" :key="item.id"
                 style="width: 100%; height: 483px; overflow: hidden; text-align: center; backface-visibility: hidden;">
-                <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.goodsId } }"
+                <router-link :to="{ path: '#', query: { id: item.goodsId } }"
                     :style="{ backgroundImage: `url(${item.image})` }" class="carouselImg">
                 </router-link>
             </el-carousel-item>
@@ -37,11 +37,11 @@
                 <div style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                     <el-card v-for="item in newList" :key="item.id" :body-style="{ padding: '0' }" shadow="never"
                         class="card" style="border: none;">
-                        <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }">
+                        <router-link :to="{ path: '#', query: { id: item.id } }">
                             <img :src="item.cover" alt="" width="228" height="246" class="image" style="object-fit: cover;">
                         </router-link>
                         <div style="display: flex; flex-direction: column; align-items: center;">
-                            <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }"
+                            <router-link :to="{ path: '#', query: { id: item.id } }"
                                 style="display: flex; flex-direction: column; align-items: center;">
                                 <span style="font-size: 0.8rem;">{{ item.name }}</span>
                                 <span style="font-size: 0.8rem; text-wrap: wrap;">{{ item.description }}</span>
@@ -59,11 +59,11 @@
                 <div style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                     <el-card v-for="item in birthdayList" :key="item.id" :body-style="{ padding: '0' }" shadow="never"
                         class="card" style="border: none;">
-                        <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }">
+                        <router-link :to="{ path: '#', query: { id: item.id } }">
                             <img :src="item.cover" alt="" width="228" height="246" class="image" style="object-fit: cover;">
                         </router-link>
                         <div style="display: flex; flex-direction: column; align-items: center;">
-                            <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }"
+                            <router-link :to="{ path: '#', query: { id: item.id } }"
                                 style="display: flex; flex-direction: column; align-items: center;">
                                 <span style="font-size: 0.8rem;">{{ item.name }}</span>
                                 <span style="font-size: 0.8rem;">{{ item.description }}</span>
@@ -81,11 +81,11 @@
                 <div style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                     <el-card v-for="item in childList" :key="item.id" :body-style="{ padding: '0' }" shadow="never"
                         class="card" style="border: none;">
-                        <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }">
+                        <router-link :to="{ path: '#', query: { id: item.id } }">
                             <img :src="item.cover" alt="" width="228" height="246" class="image" style="object-fit: cover;">
                         </router-link>
                         <div style="display: flex; flex-direction: column; align-items: center;">
-                            <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }"
+                            <router-link :to="{ path: '#', query: { id: item.id } }"
                                 style="display: flex; flex-direction: column; align-items: center;">
                                 <span style="font-size: 0.8rem;">{{ item.name }}</span>
                                 <span style="font-size: 0.8rem;">{{ item.description }}</span>
@@ -103,11 +103,11 @@
                 <div style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                     <el-card v-for="item in partyList" :key="item.id" :body-style="{ padding: '0' }" shadow="never"
                         class="card" style="border: none;">
-                        <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }">
+                        <router-link :to="{ path: '#', query: { id: item.id } }">
                             <img :src="item.cover" alt="" width="228" height="246" class="image" style="object-fit: cover;">
                         </router-link>
                         <div style="display: flex; flex-direction: column; align-items: center;">
-                            <router-link :to="{ path: '/user/goods/goods_detail', query: { id: item.id } }"
+                            <router-link :to="{ path: '#', query: { id: item.id } }"
                                 style="display: flex; flex-direction: column; align-items: center;">
                                 <span style="font-size: 0.8rem;">{{ item.name }}</span>
                                 <span style="font-size: 0.8rem;">{{ item.description }}</span>

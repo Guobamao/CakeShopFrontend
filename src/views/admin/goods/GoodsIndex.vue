@@ -11,7 +11,7 @@
                     <el-table-column prop="id" label="ID" width="50"></el-table-column>
                     <el-table-column label="图片" prop="cover" width="120">
                         <template slot-scope="scope">
-                            <img :src="scope.row.cover" alt="" style="width: 80px;">
+                            <img :src="scope.row.cover" alt="" style="width: 80px; object-fit: cover;">
                         </template>
                     </el-table-column>
                     <el-table-column label="商品名称" prop="name" width="150">
@@ -160,8 +160,7 @@ export default {
                 { label: '全部商品', value: '' },
                 { label: '蛋糕', value: "1" },
                 { label: '面包', value: "2" },
-                { label: '下午茶', value: "3"},
-                { label: '冰淇淋', value: "4"}
+                { label: '下午茶', value: "3"}
             ],
             addFormVisible: false,
             addForm: {

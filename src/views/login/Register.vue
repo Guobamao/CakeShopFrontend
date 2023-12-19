@@ -89,7 +89,10 @@ export default {
                         phone: this.registerForm.phone
                     }).then(res => {
                         if (res.data.code == 1) {
-                            this.$message.success('注册成功');
+                            this.$notify.success({
+                                title: '注册成功',
+                                message: '欢迎加入蛋糕店',
+                            })
                             this.$router.push('/login');
                         } else {
                             this.$notify.error({

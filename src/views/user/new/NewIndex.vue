@@ -6,11 +6,11 @@
             <div style="display: flex; flex-wrap: wrap;">
                 <el-card v-for="goods in item.data" :key="goods.id" :body-style="{ padding: '0' }" shadow="never" class="card"
                     style="border: none;">
-                    <router-link :to="{ path: '/user/goods/goods_detail', query: { id: goods.id } }">
+                    <router-link :to="{ path: '#', query: { id: goods.id } }">
                         <img :src="goods.cover" alt="" width="228" height="246" class="image" style="object-fit: cover;">
                     </router-link>
                     <div style="display: flex; flex-direction: column; align-items: center;">
-                        <router-link :to="{ path: '/user/goods/goods_detail', query: { id: goods.id } }"
+                        <router-link :to="{ path: '#', query: { id: goods.id } }"
                             style="display: flex; flex-direction: column; align-items: center;">
                             <span style="font-size: 0.8rem;">{{ goods.name }}</span>
                             <span style="font-size: 0.8rem;">￥{{ goods.price }}/一个</span>
